@@ -1,0 +1,31 @@
+from collections import defaultdict
+
+total = int(input())
+for _ in range(total):
+	words = list(map(str,input().split(' ')))
+	collector = defaultdict(str)
+	for word in words:
+		lenght = len(word)
+		count = 1
+		key = 0
+		basket = ""
+		for char in word:
+			if char.isdigit():
+				key *= count
+				key += int(char)
+				count *= 10
+			else:
+				basket += char
+		collector[key] = basket
+	collector = dict(sorted(collector.items()))
+	
+	ans = ""
+	i = 0
+	for key,values in collector.items():
+		if i == 0:
+			space = ""
+			i += 1
+		else:
+			space = " "
+		ans += space + values
+	print(ans)
