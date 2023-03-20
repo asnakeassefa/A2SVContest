@@ -1,10 +1,11 @@
-number = input()
-# number = "900"
+nums = input()
 ans = ""
-for i,num in enumerate(number):
-    if i == 0 and 9-int(num) == 0:
-        ans += num
+for i,num in enumerate(nums):
+    if i == 0 and num == "9":
+        ans += "9"
+    elif 9 - int(num) < int(num):
+        ans += str(9-int(num))
     else:
-        ans += str(min(9-int(num),int(num)))
-ans = int(ans)
-print(ans)
+        ans += num
+
+print(int(ans))
